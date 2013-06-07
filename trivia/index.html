@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+		<link href="trivia/trivia.css" rel="stylesheet" type="text/css" />
+
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+<script type="text/javascript" src="display-xml.js"></script>
+<script>
+ $(document).ready(function() // or $(function()
+ {
+     displayCard();
+ });
+</script>
+</head>
+<body>
+
+		<div data-role="page" id="study">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content" onload="displayCard()">
+				<div id='show_card'></div><br>
+				<input type="button" onclick="previous()" value="<<" />
+				<input type="button" onclick="next()" value=">>" />
+			</div>
+		</div>
+	</body>
+</html>
+

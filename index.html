@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+		<link href="trivia/trivia.css" rel="stylesheet" type="text/css" />
+
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+	</head>
+    <body>
+        
+		<!-- Home -->		
+		<div data-role="page" id="home">
+            <div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+                <h3>Citizenship Study App</h3>
+            </div>
+            <div data-role="content">
+                <div style=" text-align:center">
+                    <img style="width: 288px; height: 100px" src="http://www.siren-bayarea.org/wp-content/uploads/2012/10/citizenship.png" />
+                </div>
+                <a data-role="button" data-theme="a" href="#test">Test Yourself</a>
+                <a data-role="button" data-theme="a" href="#study">Study Flashcards</a>
+                <!--<a data-role="button" data-theme="a" href="#scores">Check Your Scores</a>
+                <a data-role="button" data-theme="a" href="#settings">Change Settings</a>	-->
+            </div>
+        </div>
+		
+		<!-- Test -->
+		<div data-role="page" id="test">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content">
+				<div id="trivia">
+					<div id="answered">
+						<h4>Total Questions: <span id="ntotalq2"></span></h4>
+					</div>
+					<div id="quizinfo">
+						<h3>Welcome to the Quiz!</h3>
+						<strong>Question Ordering Options</strong>
+						<ul>
+							<li>Consecutive - All the questions are displayed consecutively from the chosen start number.</li>
+							<li>Random - All the questions are displayed in a random order.</li>
+						</ul>
+						<strong>Optional Timer</strong>
+						<br>&bull; If the countdown timer is enabled, you will have 15 seconds to answer each question.<br/>
+						<br/> - Click the Start button to start your quiz. The Reset button, resets all the options.
+					</div>
+					
+						<input style="display:none" type="radio" name="level" id="level1" checked="checked" />
+						<input style="display:none" type="radio" name="level" id="level2" />
+						<h3>Options:</h3>
+						<input type="radio" name="qmode" id="qindex" checked="checked" data-theme="b"><label for="qindex">Consecutive</label>
+						
+						<div class="ui-block">
+							<b>From: </b><input type="text" name="nquiz" id="nquiz" value="1"> <b>To: <span id="totalq"></span></b>
+						</div>
+						<input type="radio" name="qmode" id="qrandom" data-theme="b"><label for="qrandom">Random</label>
+						<label for="qctimer"><input type="checkbox" id="qctimer" data-theme="b"/>Countdown Timer</label><hr/>
+						
+						<div class="ui-grid-a">		
+							<div class="ui-block-a"><a href="#test" data-role="button" data-theme="a" id="treset" disabled="disabled">Reset</a></div>
+							<div class="ui-block-b"><a href="#test_launch"data-role="button" data-theme="a" id="squiz" >Start</a></div>
+						</div><!-- /grid-a -->
+				</div>		
+			</div>
+		</div>
+		
+		
+				<!-- Test Launch -->
+		<div data-role="page" id="test_launch">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content">
+				<div id="trivia">
+					<div id="answered2">
+						<h4>Question: <em id="nqansw">0</em> of <span id="ntotalq"></span></h4>
+						<span id="nca">0</span> - Correct answers
+						<span id="nia">0</span> - Incorrect answers
+					</div>
+					<div id="quiz">
+							
+					</div>
+					
+						<p><a href="#test" data-role="button" class="ui-btn-right" data-theme="a" id="treset" disabled="disabled">Reset</a></p>
+				</div>		
+			</div>
+		</div>
+		
+				<!-- Study -->
+		<div data-role="page" id="study">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content">
+				<div id='show_card'></div><br>
+				<div class="ui-grid-a">		
+					<div class="ui-block-a"><a data-role="button" data-theme="b" onclick="previous()" value="<<" /><<</a></div>
+					<div class="ui-block-b"><a data-role="button" data-theme="b" onclick="next()" value=">>" />>></a></div>
+				</div><!-- /grid-a -->
+			</div>
+		</div>
+		
+					<!-- Scores -->
+		<div data-role="page" id="scores">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">Home</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content">
+				<h3>Scores</h3>
+				<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<h5>Date</h5>
+					</div>
+					<div class="ui-block-b">
+						<h5>Score</h5>
+					</div>
+					<div class="ui-block-c">
+						<h5>Completed</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Settings -->
+		<div data-role="page" id="settings">
+			<div data-theme="a" data-role="header">
+				<a data-role="button" href="#home" class="ui-btn-right">
+					Home
+				</a>
+				<h3>Citizenship Study App</h3>
+			</div>
+			<div data-role="content">
+				<h3>Settings</h3>
+				<div data-role="fieldcontain">
+					<label for="selectmenu1">
+						Language
+					</label>
+					<select id="selectmenu1" name="">
+						<option value="english">English</option>
+						<option value="spanish">Spanish</option>
+						<option value="Chinese">Chinese</option>
+						<option value="korean">Korean</option>
+						<option value="arabic">Arabic</option>
+						<option value="tagalog">Tagalog</option>
+						<option value="vietnamese">Vietnamese</option>
+					</select>
+				</div>
+				<div data-role="fieldcontain">
+					<label for="selectmenu2">Questions per Test</label>
+					<select id="selectmenu2" name="">
+						<option value="10">10 Questions</option>
+						<option value="20">20 Questions</option>
+						<option value="25">25 Questions</option>
+						<option value="50">50 Questions</option>
+						<option value="100">100 Questions</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="trivia/display-xml.js"></script>
+		<script type="text/javascript" src="trivia/trivia.js"></script>
+		<script>
+ $(document).ready(function() // or $(function()
+ {
+     displayCard();
+ });
+</script>
+	</body>
+</html>
